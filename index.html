@@ -26,6 +26,7 @@
     .border-accent { border-color: var(--accent); }
     .border-primary { border-color: var(--primary); }
 
+
     /* Nav */
     nav { background-color: var(--primary); }
 
@@ -34,7 +35,7 @@
       background-color: #b0bec5;
       background-image: url('Townhouse Rendering 6-30-26 (1).png');
       background-size: cover;
-      background-position: center;
+      background-position: center 45%;
       min-height: 520px;
       position: relative;
     }
@@ -93,8 +94,8 @@
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 shadow-lg">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div>
+    <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
+      <div class="flex items-baseline gap-2">
         <p class="text-white font-bold text-lg leading-tight">Belmont Square</p>
         <p class="text-xs sans" style="color: var(--accent); letter-spacing: 0.1em;">TOWNHOMES</p>
       </div>
@@ -127,7 +128,7 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
       <p class="section-label mb-3">Now Taking Reservations for 2027 Move-Ins</p>
       <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
-        Own Your Space.<br><span class="text-3xl md:text-5xl font-semibold text-white">Don't Have It Own You.</span>
+        Own your space,<br>don't let it own you.
       </h1>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#floor-plans" class="inline-block px-8 py-3 text-white font-bold rounded sans transition text-center" style="background-color: var(--accent);">
@@ -145,7 +146,7 @@
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--primary);">Welcome to Belmont Square</h2>
       <p class="text-gray-600 text-lg leading-relaxed mb-6 sans">
-        Belmont Square Townhomes offers a rare opportunity to own a brand-new, thoughtfully designed home in Belmont, Michigan — part of the highly regarded Rockford School District. Each townhome is built with quality craftsmanship, modern finishes, and the space you need to truly make it your own.
+        Belmont Square Townhomes offers a rare opportunity to own a brand-new, thoughtfully designed home in Belmont, Michigan — part of the highly regarded Rockford School District. Each townhome is built with quality craftsmanship, modern finishes, and the space you need to truly make it your own — all with a relatively care-free lifestyle.
       </p>
       <p class="text-gray-600 text-lg leading-relaxed sans">
         Best of all, exterior maintenance is completely taken care of — landscaping and snowplowing are included, so you can enjoy your home without the weekend chores. Located in the Rockford area with easy access to parks, shopping, dining, and downtown Grand Rapids, Belmont Square puts you right where you want to be.
@@ -153,19 +154,19 @@
       <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="text-center">
           <p class="text-4xl font-bold" style="color: var(--primary);">12</p>
-          <p class="text-sm text-gray-500 sans mt-1">Total Units</p>
+          <p class="text-sm text-gray-500 sans mt-1">Homes Available</p>
         </div>
         <div class="text-center">
           <p class="text-4xl font-bold" style="color: var(--primary);">2–3</p>
-          <p class="text-sm text-gray-500 sans mt-1">Bedrooms</p>
+          <p class="text-sm text-gray-500 sans mt-1">Bedroom Versions Available</p>
         </div>
         <div class="text-center">
-          <p class="text-4xl font-bold" style="color: var(--primary);">1,632</p>
-          <p class="text-sm text-gray-500 sans mt-1">Sq Ft</p>
+          <p class="text-4xl font-bold" style="color: var(--primary);">~1,632</p>
+          <p class="text-sm text-gray-500 sans mt-1">Approx Sq Ft</p>
         </div>
         <div class="text-center">
-          <p class="text-4xl font-bold" style="color: var(--primary);">$419k</p>
-          <p class="text-sm text-gray-500 sans mt-1">Starting Price</p>
+          <p class="text-4xl font-bold" style="color: var(--primary);">$419,000</p>
+          <p class="text-sm text-gray-500 sans mt-1">Starting At</p>
         </div>
       </div>
     </div>
@@ -200,9 +201,9 @@
           <p class="text-gray-600 sans text-sm leading-relaxed">Belmont Square is located within the highly regarded Rockford School District — one of the most sought-after districts in West Michigan.</p>
         </div>
         <div class="feature-card bg-white p-6 rounded-lg shadow-sm">
-          <div class="text-3xl mb-4" style="color: var(--accent);"><i class="fas fa-snowflake"></i></div>
-          <h3 class="text-lg font-bold mb-2" style="color: var(--primary);">Energy Efficient</h3>
-          <p class="text-gray-600 sans text-sm leading-relaxed">High-efficiency HVAC, foam insulation, and Energy Star appliances keep utility costs low year-round.</p>
+          <div class="text-3xl mb-4" style="color: var(--accent);"><i class="fas fa-person-running"></i></div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--primary);">Lifestyle</h3>
+          <p class="text-gray-600 sans text-sm leading-relaxed">Perfect location for cyclists, runners and walkers — with direct access to the White Pine Trail, the new Grand River Greenway Trail, and nearby parks.</p>
         </div>
         <div class="feature-card bg-white p-6 rounded-lg shadow-sm">
           <div class="text-3xl mb-4" style="color: var(--accent);"><i class="fas fa-house-flag"></i></div>
@@ -233,11 +234,11 @@
           <div class="bg-white grid grid-cols-2 gap-2 p-3">
             <div>
               <p class="text-center text-xs text-gray-400 sans mb-1">1st Floor</p>
-              <img src="Belmont Square 1st Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 1st Floor.png', '1st Floor Plan')">
+              <img src="Belmont Square Main Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square Main Floor.png', '1st Floor Plan')">
             </div>
             <div>
               <p class="text-center text-xs text-gray-400 sans mb-1">2nd Floor</p>
-              <img src="Belmont Square 2nd Floor.png" alt="Second Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 2nd Floor.png', '2nd Floor Plan')">
+              <img src="Belmont Square 2 BR version.png" alt="Second Floor Plan - 2 BR" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 2 BR version.png', '2nd Floor - 2 BR')">
             </div>
           </div>
           <button onclick="togglePlan('plan-a')" class="w-full p-5 text-left">
@@ -286,11 +287,11 @@
           <div class="bg-white grid grid-cols-2 gap-2 p-3">
             <div>
               <p class="text-center text-xs text-gray-400 sans mb-1">1st Floor</p>
-              <img src="Belmont Square 1st Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 1st Floor.png', '1st Floor Plan')">
+              <img src="Belmont Square Main Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square Main Floor.png', '1st Floor Plan')">
             </div>
             <div>
               <p class="text-center text-xs text-gray-400 sans mb-1">2nd Floor</p>
-              <img src="Belmont Square 2nd Floor.png" alt="Second Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 2nd Floor.png', '2nd Floor Plan')">
+              <img src="Belmont Square 3 BR version.png" alt="Second Floor Plan - 3 BR" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 3 BR version.png', '2nd Floor - 3 BR')">
             </div>
           </div>
           <button onclick="togglePlan('plan-b')" class="w-full p-5 text-left">
@@ -338,7 +339,6 @@
 
       <!-- Site Plan -->
       <div class="max-w-4xl mx-auto mt-12">
-        <p class="section-label text-center mb-3">Site Plan</p>
         <h3 class="text-xl font-bold text-center mb-6" style="color: var(--primary);">Belmont Square Community Layout</h3>
         <div class="max-w-xl mx-auto rounded-xl overflow-hidden shadow-md cursor-zoom-in" onclick="openLightbox('Site Plan full color.png', 'Site Plan')">
           <img src="Site Plan full color.png" alt="Belmont Square Site Plan" class="w-full h-auto hover:opacity-90 transition">
@@ -352,7 +352,6 @@
   <section id="neighborhood" class="py-16 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
-        <p class="section-label mb-3">Location</p>
         <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--primary);">Everything Within Reach</h2>
         <p class="text-gray-500 sans mt-3 max-w-2xl mx-auto">Belmont Square is a highly walkable community with direct access to the White Pine Trail — bike to downtown Rockford in 4 miles, or hop on US-131 for a 15-minute drive to Grand Rapids.</p>
       </div>
@@ -384,8 +383,8 @@
             <ul class="space-y-2 text-gray-600 text-sm pl-6">
               <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> White Pine Trail — walking distance</li>
               <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> Downtown Rockford — 4 miles by trail</li>
-              <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> Grand River Greenway Trail — nearby</li>
-              <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> Rogue River Park — nearby</li>
+              <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> Grand River Greenway Trail — 1 mile</li>
+              <li class="flex items-center gap-2"><i class="fas fa-circle text-xs" style="color: var(--accent);"></i> Rogue River Park — 1 mile</li>
             </ul>
           </div>
           <div>
@@ -417,7 +416,7 @@
   <section class="py-16 px-6 text-white text-center" style="background-color: var(--primary);">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Make Your Move?</h2>
-      <p class="text-white/80 sans text-lg mb-8">Units are limited. Get in touch today to learn about availability, pricing, and scheduling a private tour.</p>
+      <p class="text-white/80 sans text-lg mb-8">Availability is limited. Get in touch today to learn about availability, pricing, amenities and move-in dates.</p>
       <a href="#contact" class="inline-block px-10 py-4 font-bold rounded sans text-lg transition" style="background-color: var(--accent); color: #1a2a3a;">
         Contact Us Today
       </a>
@@ -478,10 +477,10 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80" onclick="closeLightbox()">
-    <div class="relative max-w-3xl w-full mx-4" onclick="event.stopPropagation()">
+    <div class="relative max-w-xl w-full mx-4" onclick="event.stopPropagation()">
       <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-3xl font-light hover:text-gray-300">&times;</button>
       <p id="lightbox-label" class="text-white text-center sans text-sm mb-2"></p>
-      <img id="lightbox-img" src="" alt="" class="w-full h-auto rounded-lg shadow-2xl">
+      <img id="lightbox-img" src="" alt="" class="w-auto h-auto rounded-lg shadow-2xl" style="max-height: 75vh; max-width: 100%;">
     </div>
   </div>
 
