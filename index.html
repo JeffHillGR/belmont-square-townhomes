@@ -475,6 +475,39 @@
     </div>
   </section>
 
+  <!-- Click-outside overlay -->
+  <div id="dozen-overlay" onclick="closeDozen()" style="display:none; position:fixed; inset:0; z-index:35;"></div>
+
+  <!-- Dozen Reasons Slide-Out -->
+  <div id="dozen-panel" class="fixed z-40" style="right:0; top:50%; transform: translateY(-50%) translateX(320px); transition: transform 0.35s ease;">
+    <div style="display:flex; align-items:flex-start;">
+      <!-- Tab -->
+      <button onclick="toggleDozen()" style="background-color:var(--accent); color:var(--primary); writing-mode:vertical-rl; padding:18px 12px; font-family:Arial,sans-serif; font-size:20px; font-weight:900; letter-spacing:0.12em; border-radius:8px 0 0 8px; box-shadow:-3px 3px 10px rgba(0,0,0,0.3); flex-shrink:0; cursor:pointer; border:none;">
+        <span style="transform:rotate(180deg); display:block;">A dozen reasons...</span>
+      </button>
+      <!-- Panel -->
+      <div style="background-color:var(--primary); width:320px; max-height:80vh; overflow-y:auto;" onwheel="event.stopPropagation()">
+        <div style="padding:24px;">
+          <h3 style="color:white; font-family:Georgia,serif; font-size:18px; font-weight:bold; margin-bottom:16px;">A dozen reasons to own a Belmont Square Townhome:</h3>
+          <div style="display:flex; flex-direction:column; gap:12px; font-family:Arial,sans-serif; font-size:14px; color:rgba(255,255,255,0.85);">
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Only 12 homes in the development, for a small intimate neighborhood feel</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Unique homes to choose from</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Soft-close cabinets in the kitchen</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Foot wide front porches (on select units)</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Months of the year: no outside maintenance</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Parks within a 12 minute drive</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Minutes drive to downtown Grand Rapids</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Flavors of soft-serve ice cream at Trailside Treats</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Miles of biking the White Pine Trail weekly may extend your life</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Days of Christmas could be had in your new home</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Eggs in the refrigerator to have for breakfast in your new home</span></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:var(--accent); font-weight:900; font-size:20px; line-height:1; flex-shrink:0; width:24px;">12</span><span>Restaurants in downtown Rockford to enjoy</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80" onclick="closeLightbox()">
     <div class="relative max-w-xl w-full mx-4" onclick="event.stopPropagation()">
@@ -505,7 +538,32 @@
       lb.classList.add('flex');
     }
 
-    function closeLightbox() {
+function toggleDozen() {
+  const panel = document.getElementById('dozen-panel');
+  const overlay = document.getElementById('dozen-overlay');
+  const isOpen = panel.dataset.open === 'true';
+  if (isOpen) {
+    panel.style.transform = 'translateY(-50%) translateX(320px)';
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+    panel.dataset.open = 'false';
+  } else {
+    panel.style.transform = 'translateY(-50%) translateX(0)';
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    panel.dataset.open = 'true';
+  }
+}
+function closeDozen() {
+  const panel = document.getElementById('dozen-panel');
+  const overlay = document.getElementById('dozen-overlay');
+  panel.style.transform = 'translateY(-50%) translateX(320px)';
+  overlay.style.display = 'none';
+  document.body.style.overflow = '';
+  panel.dataset.open = 'false';
+}
+
+function closeLightbox() {
       const lb = document.getElementById('lightbox');
       lb.classList.add('hidden');
       lb.classList.remove('flex');
