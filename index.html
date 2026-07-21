@@ -288,15 +288,8 @@
         <!-- Plan A: 2 Bed / 2.5 Bath -->
         <div class="plan-card bg-white rounded-xl overflow-hidden">
           <!-- Floor plan preview - always visible -->
-          <div class="bg-white grid grid-cols-2 gap-2 p-3">
-            <div>
-              <p class="text-center text-xs text-gray-400 sans mb-1">1st Floor</p>
-              <img src="Belmont Square Main Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square Main Floor.png', '1st Floor Plan')">
-            </div>
-            <div>
-              <p class="text-center text-xs text-gray-400 sans mb-1">2nd Floor</p>
-              <img src="Belmont Square 2 BR version.png" alt="Second Floor Plan - 2 BR" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 2 BR version.png', '2nd Floor - 2 BR')">
-            </div>
+          <div class="bg-white p-3">
+            <img src="1-2BR-Belmont-Square-Floorplans.jpg" alt="2 Bedroom Floor Plan" class="w-full object-contain cursor-zoom-in hover:opacity-80 transition" style="max-height: 280px;" onclick="openLightbox('1-2BR-Belmont-Square-Floorplans.jpg', 'Plan A — 2 Bedroom Floor Plan')">
           </div>
           <button onclick="togglePlan('plan-a')" class="w-full p-5 text-left">
             <div class="flex items-center justify-between mb-3">
@@ -341,15 +334,8 @@
         <!-- Plan B: 3 Bed / 2.5 Bath -->
         <div class="plan-card bg-white rounded-xl overflow-hidden">
           <!-- Floor plan preview - always visible -->
-          <div class="bg-white grid grid-cols-2 gap-2 p-3">
-            <div>
-              <p class="text-center text-xs text-gray-400 sans mb-1">1st Floor</p>
-              <img src="Belmont Square Main Floor.png" alt="First Floor Plan" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square Main Floor.png', '1st Floor Plan')">
-            </div>
-            <div>
-              <p class="text-center text-xs text-gray-400 sans mb-1">2nd Floor</p>
-              <img src="Belmont Square 3 BR version.png" alt="Second Floor Plan - 3 BR" class="w-full h-48 object-contain cursor-zoom-in hover:opacity-80 transition" onclick="openLightbox('Belmont Square 3 BR version.png', '2nd Floor - 3 BR')">
-            </div>
+          <div class="bg-white p-3">
+            <img src="2-3BR-Belmont-Square-Floorplans.jpg" alt="3 Bedroom Floor Plan" class="w-full object-contain cursor-zoom-in hover:opacity-80 transition" style="max-height: 280px;" onclick="openLightbox('2-3BR-Belmont-Square-Floorplans.jpg', 'Plan B — 3 Bedroom Floor Plan')">
           </div>
           <button onclick="togglePlan('plan-b')" class="w-full p-5 text-left">
             <div class="flex items-center justify-between mb-3">
@@ -570,7 +556,7 @@
     <div class="relative max-w-xl w-full mx-4" onclick="event.stopPropagation()">
       <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-3xl font-light hover:text-gray-300">&times;</button>
       <p id="lightbox-label" class="text-white text-center sans text-sm mb-2"></p>
-      <img id="lightbox-img" src="" alt="" class="w-auto h-auto rounded-lg shadow-2xl" style="max-height: 75vh; max-width: 100%;">
+      <img id="lightbox-img" src="" alt="" class="w-auto h-auto rounded-lg shadow-2xl" style="max-height: 92vh; max-width: 92vw;">
     </div>
   </div>
 
