@@ -161,7 +161,7 @@
         <a href="#features" class="text-white/80 hover:text-white transition">Features</a>
         <a href="#floor-plans" class="text-white/80 hover:text-white transition">Floor Plans</a>
         <a href="#neighborhood" class="text-white/80 hover:text-white transition">Neighborhood</a>
-        <a href="#contact" class="px-4 py-2 text-white font-semibold rounded transition" style="background-color: var(--accent);">Get in Touch</a>
+        <a href="#contact" onclick="trackCTA('Nav - Get in Touch')" class="px-4 py-2 text-white font-semibold rounded transition" style="background-color: var(--accent);">Get in Touch</a>
         <div class="flex items-center gap-3">
           <a href="https://www.facebook.com/profile.php?id=61594026691921" target="_blank" rel="noopener" aria-label="Facebook" class="text-white/80 hover:text-white transition">
             <i class="fab fa-facebook"></i>
@@ -182,7 +182,7 @@
       <a href="#features" onclick="closeMenu()" class="block text-white/80 hover:text-white py-1">Features</a>
       <a href="#floor-plans" onclick="closeMenu()" class="block text-white/80 hover:text-white py-1">Floor Plans</a>
       <a href="#neighborhood" onclick="closeMenu()" class="block text-white/80 hover:text-white py-1">Neighborhood</a>
-      <a href="#contact" onclick="closeMenu()" class="block font-semibold py-1" style="color: var(--accent);">Get in Touch</a>
+      <a href="#contact" onclick="closeMenu(); trackCTA('Mobile Nav - Get in Touch')" class="block font-semibold py-1" style="color: var(--accent);">Get in Touch</a>
       <div class="flex items-center gap-4 pt-2">
         <a href="https://www.facebook.com/profile.php?id=61594026691921" target="_blank" rel="noopener" aria-label="Facebook" class="text-white/80 hover:text-white transition text-lg">
           <i class="fab fa-facebook"></i>
@@ -206,7 +206,7 @@
         <a href="#floor-plans" class="inline-block px-8 py-3 text-white font-bold rounded sans transition text-center" style="background-color: var(--accent);">
           View Floor Plans
         </a>
-        <a href="#contact" class="inline-block px-8 py-3 font-bold rounded sans transition text-center border-2 border-white text-white hover:bg-white hover:text-primary">
+        <a href="#contact" onclick="trackCTA('Hero - Send Me Info')" class="inline-block px-8 py-3 font-bold rounded sans transition text-center border-2 border-white text-white hover:bg-white hover:text-primary">
           Send Me Info
         </a>
       </div>
@@ -356,7 +356,7 @@
               <p class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: var(--accent);"></i> Large front porch</p>
               <p class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: var(--accent);"></i> Rear-loaded attached garage</p>
             </div>
-            <a href="#contact" class="block w-full text-center py-2 rounded font-semibold text-sm transition text-white mt-4" style="background-color: var(--primary);">
+            <a href="#contact" onclick="trackCTA('Floor Plan A - Request Info')" class="block w-full text-center py-2 rounded font-semibold text-sm transition text-white mt-4" style="background-color: var(--primary);">
               Request Info
             </a>
           </div>
@@ -403,7 +403,7 @@
               <p class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: var(--accent);"></i> Large front porch</p>
               <p class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: var(--accent);"></i> Rear-loaded attached garage</p>
             </div>
-            <a href="#contact" class="block w-full text-center py-2 rounded font-semibold text-sm transition text-white mt-4" style="background-color: var(--primary);">
+            <a href="#contact" onclick="trackCTA('Floor Plan B - Request Info')" class="block w-full text-center py-2 rounded font-semibold text-sm transition text-white mt-4" style="background-color: var(--primary);">
               Request Info
             </a>
           </div>
@@ -491,7 +491,7 @@
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Make Your Move?</h2>
       <p class="text-white/80 sans text-lg mb-8">Availability is limited. Get in touch today to learn about availability, pricing, amenities and move-in dates.</p>
-      <a href="#contact" class="inline-block px-10 py-4 font-bold rounded sans text-lg transition" style="background-color: var(--accent); color: #1a2a3a;">
+      <a href="#contact" onclick="trackCTA('CTA Banner - Contact Us Today')" class="inline-block px-10 py-4 font-bold rounded sans text-lg transition" style="background-color: var(--accent); color: #1a2a3a;">
         Contact Us Today
       </a>
     </div>
@@ -510,6 +510,7 @@
         </p>
       </div>
       <form id="inquiry-form" onsubmit="submitForm(event)" class="bg-white rounded-xl shadow-md p-8 space-y-5 sans">
+        <input type="hidden" name="cta_source" id="cta_source" value="Direct / Scrolled to form">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-1">First Name *</label>
@@ -691,6 +692,11 @@ function closeLightbox() {
       icon.className = 'fas fa-bars';
     }
 
+    function trackCTA(label) {
+      const field = document.getElementById('cta_source');
+      if (field) field.value = label;
+    }
+
     async function submitForm(e) {
       e.preventDefault();
       const form = e.target;
@@ -707,6 +713,7 @@ function closeLightbox() {
         phone: form.phone.value,
         interest: form.interest.value,
         message: form.message.value,
+        cta_source: form.cta_source.value,
         timestamp: new Date().toISOString()
       };
 
