@@ -224,6 +224,14 @@
       <p class="text-gray-600 text-lg leading-relaxed sans">
         Best of all, exterior maintenance is completely taken care of — landscaping and snowplowing are included, so you can enjoy your home without the weekend chores. Located in the Rockford area with easy access to parks, shopping, dining, and downtown Grand Rapids, Belmont Square puts you right where you want to be.
       </p>
+      <button onclick="openVideo()" class="mt-8 relative block w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-md group cursor-pointer">
+        <img src="Video Thumbnail.jpg" alt="Watch the Belmont Square Townhomes video" class="w-full h-auto block">
+        <span class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/35 transition">
+          <span class="flex items-center justify-center w-16 h-16 rounded-full text-white text-2xl" style="background-color: var(--accent);">
+            <i class="fas fa-play ml-1"></i>
+          </span>
+        </span>
+      </button>
       <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="text-center">
           <p class="text-4xl font-bold" style="color: var(--primary);">12</p>
@@ -592,6 +600,18 @@
     </div>
   </div>
 
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80" onclick="closeVideo()">
+    <div class="relative w-full max-w-5xl mx-4" onclick="event.stopPropagation()">
+      <button onclick="closeVideo()" class="absolute -top-10 right-0 text-white text-3xl font-light hover:text-gray-300">&times;</button>
+      <div class="relative w-full rounded-lg shadow-2xl overflow-hidden" style="aspect-ratio: 16 / 9;">
+        <video id="video-modal-player" class="absolute inset-0 w-full h-full" controls playsinline poster="Video Thumbnail.jpg">
+          <source src="Belmont Square Video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
   <!-- As Seen In -->
   <section class="py-8 px-6 bg-white border-t border-gray-100">
     <div class="max-w-4xl mx-auto text-center">
@@ -677,7 +697,23 @@ function closeLightbox() {
       lb.classList.remove('flex');
     }
 
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    function openVideo() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('video-modal-player');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      video.play();
+    }
+
+    function closeVideo() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('video-modal-player');
+      video.pause();
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeVideo(); } });
 
     function togglePlan(id) {
       const panel = document.getElementById(id);
