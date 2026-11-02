@@ -103,6 +103,11 @@
       height: 100%;
       object-fit: cover;
       object-position: center 25%;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-video.active {
+      opacity: 1;
     }
     .hero-overlay {
       position: absolute;
@@ -208,9 +213,8 @@
 
   <!-- Hero -->
   <section class="hero flex items-center" style="padding-top: 72px;">
-    <video class="hero-video" autoplay muted loop playsinline poster="Belmont Hero 3 Poster.jpg" aria-hidden="true">
-      <source src="Belmont Hero 3 Web.mp4" type="video/mp4">
-    </video>
+    <video class="hero-video active" src="Belmont Hero 3 Trim Web.mp4" autoplay muted playsinline poster="Belmont Hero 3 Poster.jpg" aria-hidden="true"></video>
+    <video class="hero-video" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="hero-overlay"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
       <p class="section-label mb-3" style="color: #fff;">Now Taking Reservations for 2027 Move-Ins</p>
@@ -671,6 +675,59 @@ function closeLightbox() {
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeVideo(); } });
+
+    // Hero reel: crossfade through the clips and loop back to the first
+    const heroClips = ['Belmont Hero 3 Trim Web.mp4', 'Belmont Hero 4 Web.mp4'];
+    const heroFadeSeconds = 1.2;
+    const heroPreloadSeconds = 10;
+    const heroPlayers = document.querySelectorAll('.hero-video');
+    let heroCurrent = 0;
+    let heroClip = 0;
+    let heroFading = false;
+
+    function loadNextHeroClip() {
+      const next = heroPlayers[1 - heroCurrent];
+      const src = heroClips[(heroClip + 1) % heroClips.length];
+      if (next.getAttribute('src') !== src) {
+        next.autoplay = false;
+        next.preload = 'auto';
+        next.src = src;
+      }
+    }
+
+    function crossfadeHero() {
+      if (heroFading) return;
+      loadNextHeroClip();
+      const outgoing = heroPlayers[heroCurrent];
+      const incoming = heroPlayers[1 - heroCurrent];
+      // Hold the current clip until the next one can actually play
+      if (incoming.readyState < 3) return;
+      heroFading = true;
+      incoming.play().catch(() => {});
+      incoming.classList.add('active');
+      outgoing.classList.remove('active');
+      heroCurrent = 1 - heroCurrent;
+      heroClip = (heroClip + 1) % heroClips.length;
+      setTimeout(() => {
+        outgoing.pause();
+        outgoing.currentTime = 0;
+        heroFading = false;
+      }, heroFadeSeconds * 1000);
+    }
+
+    heroPlayers.forEach(player => {
+      player.addEventListener('timeupdate', () => {
+        if (heroFading || player !== heroPlayers[heroCurrent]) return;
+        const remaining = player.duration - player.currentTime;
+        if (remaining < heroPreloadSeconds) loadNextHeroClip();
+        if (remaining < heroFadeSeconds) crossfadeHero();
+      });
+      player.addEventListener('ended', crossfadeHero);
+      // If the current clip already ended while waiting, fade as soon as this one is ready
+      player.addEventListener('canplay', () => {
+        if (player !== heroPlayers[heroCurrent] && heroPlayers[heroCurrent].ended) crossfadeHero();
+      });
+    });
 
     function togglePlan(id) {
       const panel = document.getElementById(id);
