@@ -96,7 +96,7 @@
       position: relative;
       overflow: hidden;
     }
-    .hero-video {
+    .reel-video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -106,7 +106,7 @@
       opacity: 0;
       transition: opacity 1.2s ease;
     }
-    .hero-video.active {
+    .reel-video.active {
       opacity: 1;
     }
     .hero-overlay {
@@ -116,6 +116,20 @@
     }
     .hero h1, .hero .section-label {
       text-shadow: 0 2px 12px rgba(0,0,0,0.55);
+    }
+
+    /* Contact */
+    .contact-reel {
+      background-color: #b0bec5;
+      background-image: url('Belmont Hero 3 Poster.jpg');
+      background-size: cover;
+      background-position: center 25%;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-intro {
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.75);
     }
 
     /* Sections */
@@ -213,8 +227,8 @@
 
   <!-- Hero -->
   <section class="hero flex items-center" style="padding-top: 72px;">
-    <video class="hero-video active" src="Belmont Hero 3 Trim Web.mp4" autoplay muted playsinline poster="Belmont Hero 3 Poster.jpg" aria-hidden="true"></video>
-    <video class="hero-video" muted playsinline preload="none" aria-hidden="true"></video>
+    <video class="reel-video active" src="Belmont Hero 3 Trim Web.mp4" autoplay muted playsinline poster="Belmont Hero 3 Poster.jpg" aria-hidden="true"></video>
+    <video class="reel-video" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="hero-overlay"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
       <p class="section-label mb-3" style="color: #fff;">Now Taking Reservations for 2027 Move-Ins</p>
@@ -525,40 +539,44 @@
   </section>
 
   <!-- Contact / Inquiry Form -->
-  <section id="contact" class="py-16 px-6" style="background-color: var(--light-bg);">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-10">
-        <p class="section-label mb-3">Get In Touch</p>
-        <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--primary);">Send Me Info</h2>
-        <p class="text-gray-500 sans mt-3">Fill out the form below and <strong>Jeff Hill</strong> at JH Realty Partners will be in touch within one business day.</p>
-        <p class="mt-2 sans text-sm" style="color: var(--primary);">
+  <section id="contact" class="contact-reel py-10 px-6">
+    <video class="reel-video active" muted playsinline preload="none" aria-hidden="true"></video>
+    <video class="reel-video" muted playsinline preload="none" aria-hidden="true"></video>
+    <div class="hero-overlay"></div>
+    <div class="relative z-10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10 items-center">
+      <div class="contact-intro text-center lg:text-left lg:col-span-2">
+        <h2 class="text-3xl md:text-4xl font-bold">Get in Touch</h2>
+        <p class="sans mt-3">Fill out the form and <strong>Jeff Hill</strong> at JH Realty Partners will be in touch within one business day.</p>
+        <p class="mt-2 sans text-sm">
           <a href="tel:+16165810521" class="hover:underline font-semibold">(616) 581-0521</a> &nbsp;|&nbsp;
           <a href="mailto:grjeff@gmail.com" class="hover:underline font-semibold">grjeff@gmail.com</a>
         </p>
       </div>
-      <form id="inquiry-form" onsubmit="submitForm(event)" class="bg-white rounded-xl shadow-md p-8 space-y-5 sans">
+      <form id="inquiry-form" onsubmit="submitForm(event)" class="bg-white rounded-xl shadow-md p-5 space-y-3 sans lg:col-span-3">
         <input type="hidden" name="cta_source" id="cta_source" value="Direct / Scrolled to form">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-1">First Name *</label>
-            <input type="text" name="first_name" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition">
+            <input type="text" name="first_name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition">
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-1">Last Name *</label>
-            <input type="text" name="last_name" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition">
+            <input type="text" name="last_name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address *</label>
+            <input type="email" name="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+            <input type="tel" name="phone" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition">
           </div>
         </div>
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address *</label>
-          <input type="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition">
-        </div>
-        <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
-          <input type="tel" name="phone" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition">
-        </div>
-        <div>
           <label class="block text-sm font-semibold text-gray-700 mb-1">I'm Interested In</label>
-          <select name="interest" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition bg-white">
+          <select name="interest" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition bg-white">
             <option value="">Select an option...</option>
             <option value="2-bedroom">2 Bedrooms</option>
             <option value="3-bedroom">3 Bedrooms</option>
@@ -567,9 +585,9 @@
         </div>
         <div>
           <label class="block text-sm font-semibold text-gray-700 mb-1">Message</label>
-          <textarea name="message" rows="4" placeholder="Questions, preferred tour times, anything else..." class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm transition resize-none"></textarea>
+          <textarea name="message" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm transition resize-none"></textarea>
         </div>
-        <button type="submit" class="w-full py-3 text-white font-bold rounded-lg transition text-sm" style="background-color: var(--primary);">
+        <button type="submit" class="w-full py-2.5 text-white font-bold rounded-lg transition text-sm" style="background-color: var(--primary);">
           Send My Inquiry
         </button>
         <p id="form-status" class="text-center text-sm hidden"></p>
@@ -676,58 +694,74 @@ function closeLightbox() {
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeVideo(); } });
 
-    // Hero reel: crossfade through the clips and loop back to the first
-    const heroClips = ['Belmont Hero 3 Trim Web.mp4', 'Belmont Hero 4 Web.mp4'];
-    const heroFadeSeconds = 1.2;
-    const heroPreloadSeconds = 10;
-    const heroPlayers = document.querySelectorAll('.hero-video');
-    let heroCurrent = 0;
-    let heroClip = 0;
-    let heroFading = false;
+    // Video reels: crossfade through the clips and loop back to the first
+    const reelFadeSeconds = 1.2;
+    const reelPreloadSeconds = 10;
 
-    function loadNextHeroClip() {
-      const next = heroPlayers[1 - heroCurrent];
-      const src = heroClips[(heroClip + 1) % heroClips.length];
-      if (next.getAttribute('src') !== src) {
-        next.autoplay = false;
-        next.preload = 'auto';
-        next.src = src;
+    function startReel(section, clips) {
+      const players = section.querySelectorAll('.reel-video');
+      let current = 0;
+      let clip = 0;
+      let fading = false;
+
+      function loadNextClip() {
+        const next = players[1 - current];
+        const src = clips[(clip + 1) % clips.length];
+        if (next.getAttribute('src') !== src) {
+          next.autoplay = false;
+          next.preload = 'auto';
+          next.src = src;
+        }
       }
+
+      function crossfade() {
+        if (fading) return;
+        loadNextClip();
+        const outgoing = players[current];
+        const incoming = players[1 - current];
+        // Hold the current clip until the next one can actually play
+        if (incoming.readyState < 3) return;
+        fading = true;
+        incoming.play().catch(() => {});
+        incoming.classList.add('active');
+        outgoing.classList.remove('active');
+        current = 1 - current;
+        clip = (clip + 1) % clips.length;
+        setTimeout(() => {
+          outgoing.pause();
+          outgoing.currentTime = 0;
+          fading = false;
+        }, reelFadeSeconds * 1000);
+      }
+
+      players.forEach(player => {
+        player.addEventListener('timeupdate', () => {
+          if (fading || player !== players[current]) return;
+          const remaining = player.duration - player.currentTime;
+          if (remaining < reelPreloadSeconds) loadNextClip();
+          if (remaining < reelFadeSeconds) crossfade();
+        });
+        player.addEventListener('ended', crossfade);
+        // If the current clip already ended while waiting, fade as soon as this one is ready
+        player.addEventListener('canplay', () => {
+          if (player !== players[current] && players[current].ended) crossfade();
+        });
+      });
+
+      // Only load and play while the section is on screen
+      new IntersectionObserver(([entry]) => {
+        const player = players[current];
+        if (entry.isIntersecting) {
+          if (!player.getAttribute('src')) player.src = clips[clip];
+          player.play().catch(() => {});
+        } else {
+          player.pause();
+        }
+      }, { rootMargin: '200px' }).observe(section);
     }
 
-    function crossfadeHero() {
-      if (heroFading) return;
-      loadNextHeroClip();
-      const outgoing = heroPlayers[heroCurrent];
-      const incoming = heroPlayers[1 - heroCurrent];
-      // Hold the current clip until the next one can actually play
-      if (incoming.readyState < 3) return;
-      heroFading = true;
-      incoming.play().catch(() => {});
-      incoming.classList.add('active');
-      outgoing.classList.remove('active');
-      heroCurrent = 1 - heroCurrent;
-      heroClip = (heroClip + 1) % heroClips.length;
-      setTimeout(() => {
-        outgoing.pause();
-        outgoing.currentTime = 0;
-        heroFading = false;
-      }, heroFadeSeconds * 1000);
-    }
-
-    heroPlayers.forEach(player => {
-      player.addEventListener('timeupdate', () => {
-        if (heroFading || player !== heroPlayers[heroCurrent]) return;
-        const remaining = player.duration - player.currentTime;
-        if (remaining < heroPreloadSeconds) loadNextHeroClip();
-        if (remaining < heroFadeSeconds) crossfadeHero();
-      });
-      player.addEventListener('ended', crossfadeHero);
-      // If the current clip already ended while waiting, fade as soon as this one is ready
-      player.addEventListener('canplay', () => {
-        if (player !== heroPlayers[heroCurrent] && heroPlayers[heroCurrent].ended) crossfadeHero();
-      });
-    });
+    startReel(document.querySelector('.hero'), ['Belmont Hero 3 Trim Web.mp4', 'Belmont Hero 4 Web.mp4']);
+    startReel(document.querySelector('.contact-reel'), ['Belmont Hero 3 Trim Web.mp4']);
 
     function togglePlan(id) {
       const panel = document.getElementById(id);
@@ -801,4 +835,3 @@ function closeLightbox() {
 
 </body>
 </html>
-```
