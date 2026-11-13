@@ -242,6 +242,9 @@
         <a href="#contact" onclick="trackCTA('Hero - Send Me Info')" class="inline-block px-8 py-3 font-bold rounded sans transition text-center border-2 border-white text-white hover:bg-white hover:text-primary">
           Send Me Info
         </a>
+        <button onclick="toggleRentVsOwn()" class="md:hidden inline-block px-8 py-3 font-bold rounded sans transition text-center bg-white" style="color: var(--primary);">
+          Rent vs Own
+        </button>
       </div>
     </div>
   </section>
@@ -595,6 +598,49 @@
     </div>
   </section>
 
+  <!-- Click-outside overlay -->
+  <div id="rvo-overlay" onclick="closeRentVsOwn()" style="display:none; position:fixed; inset:0; z-index:35;"></div>
+
+  <!-- Rent vs Own Slide-Out -->
+  <div id="rvo-panel" class="fixed z-40" style="--rvo-w:min(330px, calc(100vw - 56px)); right:0; top:50%; transform: translateY(-50%) translateX(var(--rvo-w)); transition: transform 0.35s ease;">
+    <div style="display:flex; align-items:center;">
+      <!-- Tab -->
+      <button onclick="toggleRentVsOwn()" class="hidden md:block" style="background-color:var(--accent); color:var(--primary); writing-mode:vertical-rl; padding:18px 12px; font-family:Arial,sans-serif; font-size:20px; font-weight:900; letter-spacing:0.12em; border-radius:8px 0 0 8px; box-shadow:-3px 3px 10px rgba(0,0,0,0.3); flex-shrink:0; cursor:pointer; border:none;">
+        <span style="transform:rotate(180deg); display:block;">Rent vs Own</span>
+      </button>
+      <!-- Panel -->
+      <div style="background-color:var(--primary); width:var(--rvo-w); max-height:85vh; overflow-y:auto;" onwheel="event.stopPropagation()">
+        <div style="padding:22px; font-family:Arial,sans-serif; font-size:13px; color:rgba(255,255,255,0.85);">
+          <button onclick="closeRentVsOwn()" class="md:hidden" aria-label="Close" style="float:right; color:white; font-size:28px; line-height:1; background:none; border:none; cursor:pointer;">&times;</button>
+          <h3 style="color:white; font-family:Georgia,serif; font-size:20px; font-weight:bold; margin-bottom:4px;">Rent vs Own</h3>
+          <p style="color:var(--accent); font-size:11px; font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Nearby rentals</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:10px;"><div style="display:flex; justify-content:space-between; gap:8px; color:white; font-weight:bold;"><span>Village at 1300</span><span>$2,695/mo</span></div><div>1,501 SF &middot; $400 per dog or cat fee</div></div>
+            <div style="border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:10px;"><div style="display:flex; justify-content:space-between; gap:8px; color:white; font-weight:bold;"><span>Avanterra on Knapp Street</span><span>$3,012/mo</span></div><div>1,543 SF &middot; $110/mo lifestyle fee</div></div>
+            <div style="border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:10px;"><div style="display:flex; justify-content:space-between; gap:8px; color:white; font-weight:bold;"><span>Evergreen Townhomes on East Beltline</span><span>$2,425/mo</span></div><div>1,051 SF &middot; plus cleaning fee and pet fee</div></div>
+            <div><div style="display:flex; justify-content:space-between; gap:8px; color:white; font-weight:bold;"><span>Meadowwood Townhomes on East Beltline</span><span>$2,925/mo</span></div><div>1,518 SF</div></div>
+          </div>
+          <p style="font-size:11px; color:rgba(255,255,255,0.6); margin-top:8px;">Rents are average monthly.</p>
+
+          <p style="color:var(--accent); font-size:11px; font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-top:16px; margin-bottom:6px;">Own</p>
+          <div style="background-color:var(--accent); color:var(--primary); border-radius:8px; padding:12px 14px;">
+            <div style="display:flex; justify-content:space-between; gap:8px; font-weight:900; font-size:15px;"><span>Belmont Square Townhomes</span><span>$2,900/mo*</span></div>
+            <div style="font-weight:bold;">1,623 SF &middot; includes condo association</div>
+            <div style="font-weight:bold;">No pet fees, no cleaning fee</div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px; font-size:14px;">
+            <div style="display:flex; gap:10px;"><span style="color:var(--accent); font-weight:900;">&#10003;</span><span>You build equity, not your landlord</span></div>
+            <div style="display:flex; gap:10px;"><span style="color:var(--accent); font-weight:900;">&#10003;</span><span>You have a say in the development</span></div>
+            <div style="display:flex; gap:10px;"><span style="color:var(--accent); font-weight:900;">&#10003;</span><span>Firewalls between units for more peace and quiet</span></div>
+          </div>
+
+          <p style="font-size:11px; color:rgba(255,255,255,0.6); margin-top:14px;">* 20% down at current rates and with our exclusive rate buy-down program.** &nbsp;** <a href="#contact" onclick="closeRentVsOwn(); trackCTA('Rent vs Own - Ask for details')" style="color:var(--accent); text-decoration:underline;">Ask for details</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80" onclick="closeLightbox()">
     <div class="relative max-w-xl w-full mx-4" onclick="event.stopPropagation()">
@@ -670,6 +716,24 @@
       lb.classList.add('flex');
     }
 
+function toggleRentVsOwn() {
+  const panel = document.getElementById('rvo-panel');
+  if (panel.dataset.open === 'true') {
+    closeRentVsOwn();
+  } else {
+    panel.style.transform = 'translateY(-50%) translateX(0)';
+    document.getElementById('rvo-overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    panel.dataset.open = 'true';
+  }
+}
+function closeRentVsOwn() {
+  const panel = document.getElementById('rvo-panel');
+  panel.style.transform = 'translateY(-50%) translateX(var(--rvo-w))';
+  document.getElementById('rvo-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+  panel.dataset.open = 'false';
+}
 function closeLightbox() {
       const lb = document.getElementById('lightbox');
       lb.classList.add('hidden');
@@ -692,7 +756,7 @@ function closeLightbox() {
       modal.classList.remove('flex');
     }
 
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeVideo(); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeVideo(); closeRentVsOwn(); } });
 
     // Video reels: crossfade through the clips and loop back to the first
     const reelFadeSeconds = 1.2;
