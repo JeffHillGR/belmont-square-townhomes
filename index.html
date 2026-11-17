@@ -260,14 +260,38 @@
       <p class="text-gray-600 text-lg leading-relaxed sans">
         Best of all, exterior maintenance is completely taken care of — landscaping and snowplowing are included, so you can enjoy your home without the weekend chores. Located in the Rockford area with easy access to parks, shopping, dining, and downtown Grand Rapids, Belmont Square puts you right where you want to be.
       </p>
-      <button onclick="openVideo()" class="mt-8 relative block w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-md group cursor-pointer">
-        <img src="Video 2 Thumbnail.jpg" alt="Watch the Belmont Square Townhomes video" class="w-full h-auto block">
-        <span class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/35 transition">
-          <span class="flex items-center justify-center w-16 h-16 rounded-full text-white text-2xl" style="background-color: var(--accent);">
-            <i class="fas fa-play ml-1"></i>
+      <div class="mt-8 max-w-2xl mx-auto">
+        <button id="video-lead" onclick="openVideo()" data-src="Belmont Square Video 4 Web.mp4" data-poster="Video 4 Poster.jpg" class="relative block w-full rounded-lg overflow-hidden shadow-md group cursor-pointer">
+          <img src="Video 4 Poster.jpg" alt="Watch the Belmont Square Townhomes video" class="w-full aspect-video object-cover block">
+          <span class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/35 transition">
+            <span class="flex items-center justify-center w-16 h-16 rounded-full text-white text-2xl" style="background-color: var(--accent);">
+              <i class="fas fa-play ml-1"></i>
+            </span>
           </span>
-        </span>
-      </button>
+        </button>
+        <!-- Clicking a thumbnail swaps it with the lead video -->
+        <div class="mt-3 grid grid-cols-3 gap-3">
+          <button onclick="swapVideo(this)" data-src="Belmont Square Video 3 Web.mp4" data-poster="Video 3 Poster.jpg" class="relative block rounded-md overflow-hidden shadow group cursor-pointer" aria-label="Show this video in the main spot">
+            <img src="Video 3 Poster.jpg" alt="" loading="lazy" class="w-full aspect-video object-cover block">
+            <span class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></span>
+          </button>
+          <button onclick="swapVideo(this)" data-src="Belmont Square Video 2 Web.mp4" data-poster="Video 2 Poster.jpg" class="relative block rounded-md overflow-hidden shadow group cursor-pointer" aria-label="Show this video in the main spot">
+            <img src="Video 2 Poster.jpg" alt="" loading="lazy" class="w-full aspect-video object-cover block">
+            <span class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></span>
+          </button>
+          <button onclick="swapVideo(this)" data-src="Belmont Square Video.mp4" data-poster="Video 1 Poster.jpg" class="relative block rounded-md overflow-hidden shadow group cursor-pointer" aria-label="Show this video in the main spot">
+            <img src="Video 1 Poster.jpg" alt="" loading="lazy" class="w-full aspect-video object-cover block">
+            <span class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rendering -->
+  <section class="px-6 pt-16 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <img src="Water color 4.png" alt="Belmont Square Townhomes Rendering" class="w-full rounded-lg shadow-md">
       <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="text-center">
           <p class="text-4xl font-bold" style="color: var(--primary);">12</p>
@@ -286,13 +310,6 @@
           <p class="text-sm text-gray-500 sans mt-1">Starting At</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Rendering -->
-  <section class="px-6 pt-16 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <img src="Water color 4.png" alt="Belmont Square Townhomes Rendering" class="w-full rounded-lg shadow-md">
     </div>
   </section>
 
@@ -455,13 +472,22 @@
 
       </div> <!-- end floor plan cards -->
 
-      <!-- Site Plan -->
-      <div class="max-w-4xl mx-auto mt-12">
-        <h3 class="text-xl font-bold text-center mb-6" style="color: var(--primary);">Belmont Square Community Layout</h3>
-        <div class="max-w-xl mx-auto rounded-xl overflow-hidden shadow-md cursor-zoom-in" onclick="openLightbox('2-web-or-mls-Site Plan 2.png', 'Site Plan')">
-          <img src="2-web-or-mls-Site Plan 2.png" alt="Belmont Square Site Plan" class="w-full h-auto hover:opacity-90 transition">
+      <!-- Site Plan + Construction Update -->
+      <div class="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h3 class="text-xl font-bold text-center mb-6" style="color: var(--primary);">Belmont Square Community Layout</h3>
+          <div class="rounded-xl overflow-hidden shadow-md cursor-zoom-in" onclick="openLightbox('2-web-or-mls-Site Plan 2.png', 'Site Plan')">
+            <img src="2-web-or-mls-Site Plan 2.png" alt="Belmont Square Site Plan" class="w-full h-auto hover:opacity-90 transition">
+          </div>
+          <p class="text-center text-xs text-gray-400 sans mt-2">Click to enlarge</p>
         </div>
-        <p class="text-center text-xs text-gray-400 sans mt-2">Click to enlarge</p>
+        <div>
+          <h3 class="text-xl font-bold text-center mb-6" style="color: var(--primary);">Construction Update: as of Nov 16th, 2026</h3>
+          <div class="rounded-xl overflow-hidden shadow-md cursor-zoom-in" onclick="openLightbox('Construction Update 2026-11-16.jpg', 'Construction Update: as of Nov 16th, 2026')">
+            <img src="Construction Update 2026-11-16.jpg" alt="Aerial view of Belmont Square site work as of November 16, 2026" loading="lazy" class="w-full object-cover hover:opacity-90 transition" style="aspect-ratio: 2048 / 1374; object-position: center 75%;">
+          </div>
+          <p class="text-center text-xs text-gray-400 sans mt-2">Click to enlarge</p>
+        </div>
       </div>
     </div>
   </section>
@@ -655,9 +681,7 @@
     <div class="relative w-full max-w-5xl mx-4" onclick="event.stopPropagation()">
       <button onclick="closeVideo()" class="absolute -top-10 right-0 text-white text-3xl font-light hover:text-gray-300">&times;</button>
       <div class="relative w-full rounded-lg shadow-2xl overflow-hidden" style="aspect-ratio: 16 / 9;">
-        <video id="video-modal-player" class="absolute inset-0 w-full h-full" controls playsinline poster="Video 2 Thumbnail.jpg">
-          <source src="Belmont Square Video 2 Web.mp4" type="video/mp4">
-        </video>
+        <video id="video-modal-player" class="absolute inset-0 w-full h-full" controls playsinline preload="none"></video>
       </div>
     </div>
   </div>
@@ -743,9 +767,22 @@ function closeLightbox() {
     function openVideo() {
       const modal = document.getElementById('video-modal');
       const video = document.getElementById('video-modal-player');
+      const lead = document.getElementById('video-lead');
+      if (video.getAttribute('src') !== lead.dataset.src) {
+        video.poster = lead.dataset.poster;
+        video.src = lead.dataset.src;
+      }
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       video.play();
+    }
+
+    function swapVideo(thumb) {
+      const lead = document.getElementById('video-lead');
+      [lead.dataset.src, thumb.dataset.src] = [thumb.dataset.src, lead.dataset.src];
+      [lead.dataset.poster, thumb.dataset.poster] = [thumb.dataset.poster, lead.dataset.poster];
+      lead.querySelector('img').src = lead.dataset.poster;
+      thumb.querySelector('img').src = thumb.dataset.poster;
     }
 
     function closeVideo() {
